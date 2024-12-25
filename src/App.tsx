@@ -7,7 +7,7 @@ import { ReportsPage } from './pages/ReportsPage';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/GarraGeradores"> {/* Adicionando o basename */}
       <Routes>
         <Route path="/" element={<DashboardPage />} />
         <Route path="/caminhoes" element={<TrucksPage />} />
