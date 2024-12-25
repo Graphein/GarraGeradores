@@ -20,16 +20,18 @@ export function Header() {
     <header className="bg-blue-600 text-white shadow-lg">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            {/* Ícone de caminhão, visível em todas as telas */}
+
+          {/* Centralizar o ícone ☰ quando o menu for aberto em telas pequenas */}
+          <div className={`flex items-center space-x-2 ${isMenuOpen ? 'hidden' : ''}`}>
+            {/* Ícone de caminhão, visível em todas as telas, exceto quando o menu estiver aberto */}
             <Truck size={32} />
             {/* Nome "Garra Geradores", visível apenas em telas grandes */}
             <h1 className="hidden sm:block text-2xl font-bold">Garra Geradores</h1>
           </div>
 
-          {/* Ícone de hambúrguer para telas pequenas */}
-          <button 
-            className="sm:hidden text-white" 
+          {/* Ícone de hambúrguer para telas pequenas, centralizado quando o menu estiver aberto */}
+          <button
+            className={`sm:hidden text-white ${isMenuOpen ? 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' : ''}`}
             onClick={toggleMenu}
           >
             {/* Exibe ☰ se o menu estiver fechado, e X se estiver aberto */}
