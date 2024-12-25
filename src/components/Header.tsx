@@ -16,20 +16,22 @@ export function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
+            {/* Ícone de caminhão, visível em todas as telas */}
             <Truck size={32} />
-            <h1 className="text-2xl font-bold">Garra Geradores</h1>
+            {/* Nome "Garra Geradores", visível apenas em telas grandes */}
+            <h1 className="hidden sm:block text-2xl font-bold">Garra Geradores</h1>
           </div>
 
           {/* Ícone de hambúrguer para telas pequenas */}
           <button 
-            className="md:hidden text-white" 
+            className="sm:hidden text-white" 
             onClick={toggleMenu}
           >
             ☰
           </button>
 
           {/* Navegação */}
-          <nav className={`md:flex space-x-6 ${isMenuOpen ? 'block' : 'hidden'} md:block`}>
+          <nav className={`sm:flex space-x-6 ${isMenuOpen ? 'block' : 'hidden'} sm:block`}>
             <Link 
               to="/" 
               className={`hover:text-blue-200 transition-colors ${location.pathname === '/' ? 'text-blue-200' : ''}`}
