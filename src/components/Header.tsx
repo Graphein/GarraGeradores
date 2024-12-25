@@ -37,7 +37,7 @@ export function Header() {
           </button>
 
           {/* Navegação */}
-          <nav className={`sm:flex space-x-6 ${isMenuOpen ? 'block' : 'hidden'} sm:block`}>
+          <nav className={`sm:flex sm:space-x-6 ${isMenuOpen ? 'block' : 'hidden'} sm:block`}>
             <Link 
               to="/" 
               className={`hover:text-blue-200 transition-colors ${location.pathname === '/' ? 'text-blue-200' : ''}`}
@@ -62,6 +62,38 @@ export function Header() {
             <Link 
               to="/relatorios" 
               className="hover:text-blue-200 transition-colors"
+              onClick={closeMenu}
+            >
+              Relatórios
+            </Link>
+          </nav>
+
+          {/* Navegação para telas pequenas (a ser exibido apenas quando o menu estiver aberto) */}
+          <nav className={`sm:hidden ${isMenuOpen ? 'block' : 'hidden'} space-y-4`}>
+            <Link 
+              to="/" 
+              className={`block hover:text-blue-200 transition-colors ${location.pathname === '/' ? 'text-blue-200' : ''}`}
+              onClick={closeMenu}
+            >
+              Dashboard
+            </Link>
+            <Link 
+              to="/caminhoes" 
+              className={`block hover:text-blue-200 transition-colors ${location.pathname === '/caminhoes' ? 'text-blue-200' : ''}`}
+              onClick={closeMenu}
+            >
+              Caminhões
+            </Link>
+            <Link 
+              to="/despesas" 
+              className="block hover:text-blue-200 transition-colors"
+              onClick={closeMenu}
+            >
+              Despesas
+            </Link>
+            <Link 
+              to="/relatorios" 
+              className="block hover:text-blue-200 transition-colors"
               onClick={closeMenu}
             >
               Relatórios
