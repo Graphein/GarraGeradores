@@ -27,7 +27,8 @@ export function Header() {
             className="sm:hidden text-white" 
             onClick={toggleMenu}
           >
-            ☰
+            {/* Exibe ☰ se o menu estiver fechado, e X se estiver aberto */}
+            {isMenuOpen ? '✖' : '☰'}
           </button>
 
           {/* Navegação */}
