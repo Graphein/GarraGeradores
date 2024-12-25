@@ -11,6 +11,11 @@ export function Header() {
     setIsMenuOpen(prevState => !prevState);
   };
 
+  // Função para fechar o menu ao clicar em um link
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="bg-blue-600 text-white shadow-lg">
       <div className="container mx-auto px-4 py-4">
@@ -36,24 +41,28 @@ export function Header() {
             <Link 
               to="/" 
               className={`hover:text-blue-200 transition-colors ${location.pathname === '/' ? 'text-blue-200' : ''}`}
+              onClick={closeMenu}
             >
               Dashboard
             </Link>
             <Link 
               to="/caminhoes" 
               className={`hover:text-blue-200 transition-colors ${location.pathname === '/caminhoes' ? 'text-blue-200' : ''}`}
+              onClick={closeMenu}
             >
               Caminhões
             </Link>
             <Link 
               to="/despesas" 
               className="hover:text-blue-200 transition-colors"
+              onClick={closeMenu}
             >
               Despesas
             </Link>
             <Link 
               to="/relatorios" 
               className="hover:text-blue-200 transition-colors"
+              onClick={closeMenu}
             >
               Relatórios
             </Link>
