@@ -10,7 +10,7 @@ export interface Truck {
   generator?: {
     name: string;
     model: string;
-    power: string; // ex: "150 kVA"
+    power: string;
     serialNumber: string;
   };
 }
@@ -36,10 +36,27 @@ export interface Report {
   createdAt: string;
 }
 
+export interface Finance {
+  id: string;
+  date: string;
+  description: string;
+  amount: number;
+  type: 'income' | 'expense';
+  category: 'service' | 'rental' | 'maintenance' | 'fuel' | 'other';
+}
+
 export const EXPENSE_TYPES = {
   fuel: 'Combustível',
   maintenance: 'Manutenção Preventiva',
   tire: 'Pneus',
   repair: 'Reparos',
+  other: 'Outros'
+} as const;
+
+export const FINANCE_CATEGORIES = {
+  service: 'Serviço',
+  rental: 'Aluguel',
+  maintenance: 'Manutenção',
+  fuel: 'Combustível',
   other: 'Outros'
 } as const;

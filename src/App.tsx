@@ -4,18 +4,18 @@ import { DashboardPage } from './pages/DashboardPage';
 import { TrucksPage } from './pages/TrucksPage';
 import { ExpensesPage } from './pages/ExpensesPage';
 import { ReportsPage } from './pages/ReportsPage';
+import { FinancesPage } from './pages/FinancesPage';
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter basename="/GarraGeradores"> {/* Adicionando o basename */}
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<DashboardPage />} />
         <Route path="/caminhoes" element={<TrucksPage />} />
         <Route path="/despesas" element={<ExpensesPage />} />
         <Route path="/relatorios" element={<ReportsPage />} />
+        <Route path="/financas" element={<FinancesPage />} />
       </Routes>
     </BrowserRouter>
   );
 }
-
-export default App;

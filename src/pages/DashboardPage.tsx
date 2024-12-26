@@ -4,10 +4,12 @@ import { DashboardCard } from '../components/DashboardCard';
 import { Truck, Fuel, WrenchIcon, DollarSign } from 'lucide-react';
 import { useExpenses } from '../hooks/useExpenses';
 import { useTrucks } from '../hooks/useTrucks';
+import { useFinances } from '../hooks/useFinances';
 
 export function DashboardPage() {
   const { expenses } = useExpenses();
   const { trucks } = useTrucks();
+  const { finances } = useFinances();
 
   const totalFuel = expenses
     .filter(e => e.type === 'fuel')
@@ -18,6 +20,16 @@ export function DashboardPage() {
     .reduce((acc, curr) => acc + curr.amount, 0);
 
   const totalExpenses = expenses.reduce((acc, curr) => acc + curr.amount, 0);
+
+  const totalIncome = finances
+    .filter(f => f.type === 'income')
+    .reduce((acc, curr) => acc + curr.amount, 0);
+
+  const totalFinanceExpenses = finances
+    .filter(f => f.type === 'expense')
+    .reduce((acc, curr) => acc + curr.amount, 0);
+
+  const profit = totalIncome - totalFinanceExpenses;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -46,9 +58,10 @@ export function DashboardPage() {
           />
           
           <DashboardCard
-            title="Total de Despesas"
-            value={`R$ ${totalExpenses.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
+            title="Lucro Total"
+            value={`R$ ${profit.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
             icon={<DollarSign size={24} />}
+            trend={profit >= 0 ? { value: 0, isPositive: true } : { value: 0, isPositive: false }}
           />
         </div>
 
