@@ -4,21 +4,21 @@ import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfil
 
 export default defineConfig({
   plugins: [react()],
-  base: '/GarraGeradores/',
+  base: '/GarraGeradores/', // Ajusta os caminhos para o nome do repositório
   resolve: {
     alias: {
-      crypto: 'crypto-browserify', // Adiciona o alias para o módulo crypto
+      crypto: 'crypto-browserify', // Substitui "crypto" por "crypto-browserify"
     },
   },
   optimizeDeps: {
     esbuildOptions: {
       define: {
-        global: 'globalThis', // Define "global" como "globalThis"
+        global: 'globalThis',
       },
       plugins: [
         NodeGlobalsPolyfillPlugin({
           process: true,
-          buffer: true, // Polyfill para process e buffer
+          buffer: true,
         }),
       ],
     },
