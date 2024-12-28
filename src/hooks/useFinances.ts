@@ -43,12 +43,9 @@ export const useFinances = create<FinanceStore>()(
       version: 1,
       migrate: (persistedState: any, version: number) => {
         if (version === 0) {
-          return {
-            ...persistedState,
-            version: 1,
-          };
+          return { ...persistedState, version: 1 };
         }
-        return persistedState;
+        return persistedState as FinanceStore;
       },
     }
   )

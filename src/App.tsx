@@ -13,40 +13,55 @@ export default function App() {
   const { user } = useAuth();
 
   return (
-    <BrowserRouter basename="/GarraGeradores"> {/* Adicionando o basename */}
+    <BrowserRouter
+      basename="/GarraGeradores"
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-        
-        <Route path="/" element={
-          <ProtectedRoute>
-            <DashboardPage />
-          </ProtectedRoute>
-        } />
-        
-        <Route path="/caminhoes" element={
-          <ProtectedRoute>
-            <TrucksPage />
-          </ProtectedRoute>
-        } />
-        
-        <Route path="/despesas" element={
-          <ProtectedRoute allowedRoles={['owner']}>
-            <ExpensesPage />
-          </ProtectedRoute>
-        } />
-        
-        <Route path="/relatorios" element={
-          <ProtectedRoute>
-            <ReportsPage />
-          </ProtectedRoute>
-        } />
-        
-        <Route path="/financas" element={
-          <ProtectedRoute allowedRoles={['owner']}>
-            <FinancesPage />
-          </ProtectedRoute>
-        } />
-
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/caminhoes"
+          element={
+            <ProtectedRoute>
+              <TrucksPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/despesas"
+          element={
+            <ProtectedRoute allowedRoles={['owner']}>
+              <ExpensesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/relatorios"
+          element={
+            <ProtectedRoute>
+              <ReportsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/financas"
+          element={
+            <ProtectedRoute allowedRoles={['owner']}>
+              <FinancesPage />
+            </ProtectedRoute>
+          }
+        />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

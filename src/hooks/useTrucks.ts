@@ -41,13 +41,9 @@ export const useTrucks = create<TruckStore>()(
       version: 1,
       migrate: (persistedState: any, version: number) => {
         if (version === 0) {
-          // Add any migration logic here if needed
-          return {
-            ...persistedState,
-            version: 1,
-          };
+          return { ...persistedState, version: 1 };
         }
-        return persistedState;
+        return persistedState as TruckStore;
       },
     }
   )

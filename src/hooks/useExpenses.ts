@@ -20,7 +20,6 @@ export const useExpenses = create<ExpenseStore>()(
       version: 1,
       addExpense: (expense) => {
         set((state) => {
-          // Update truck dates when adding expense
           const { trucks, updateTruck } = useTrucks.getState();
           const truck = trucks.find(t => t.id === expense.truckId);
           
@@ -64,12 +63,9 @@ export const useExpenses = create<ExpenseStore>()(
       version: 1,
       migrate: (persistedState: any, version: number) => {
         if (version === 0) {
-          return {
-            ...persistedState,
-            version: 1,
-          };
+          return { ...persistedState, version: 1 };
         }
-        return persistedState;
+        return persistedState as ExpenseStore;
       },
     }
   )
